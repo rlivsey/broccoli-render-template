@@ -1,0 +1,26 @@
+{
+  "name": "broccoli-render-template",
+  "description": "Render templates with Broccoli (haml, jade, markdown etc...) using consolidate",
+  "version": "0.0.1",
+  "author": "Richard Livsey <richard@livsey.org>",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rlivsey/broccoli-render-template"
+  },
+  "dependencies": {
+    "broccoli-filter": "~0.1.0",
+    "broccoli": "~0.2.0",
+    "rsvp": "~3.0.6",
+    "consolidate": "~0.10.0"
+  },
+  "keywords": [
+    "broccoli-plugin",
+    "template",
+    "jade",
+    "ejs",
+    "handlebars",
+    "mustache"
+  ]
+}
