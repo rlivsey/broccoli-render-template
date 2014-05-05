@@ -1,3 +1,4 @@
+var fs = require('fs')
 var RSVP = require('rsvp')
 var Filter = require('broccoli-filter')
 var cons = require('consolidate')
@@ -35,14 +36,15 @@ RenderTemplate.prototype.getDestFilePath = function(relativePath) {
   return null;
 }
 
-RenderTemplate.prototype.processString = function (string, relativePath) {
-  var options = this.options;
+RenderTemplate.prototype.processFile = function(srcDir, destDir, relativePath) {
+  var self = this;
   return new RSVP.Promise(function(resolve, reject){
-    cons.handlebars.render(string, options, function(e, html){
+    self.engineFromPath(relativePath)(srcDir + '/' + relativePath, self.options, function(e, html){
       if (e) {
         reject(e)
       } else {
-        resolve(html)
+        var outputPath = self.getDestFilePath(relativePath)
+        resolve(fs.writeFileSync(destDir + '/' + outputPath, html, { encoding: 'utf8' }))
       }
     })
   })
